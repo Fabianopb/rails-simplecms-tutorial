@@ -10,6 +10,6 @@
 <% name = "Fabiano" %>
 <% name = "Sorry!'); alert('I hacked you!" %>
 
-<%= link_to('Roar', '#', :onClick => "jsRoar('#{name}'); return true;") %>
+<%= link_to('Roar', '#', :onClick => "jsRoar('#{j(name)}'); return true;") %>
 
-<%= javascript_tag("jsRoar('#{name}');") %>
+<%= javascript_tag("jsRoar('#{j(name)}');") %>
