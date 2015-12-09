@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
+
+
   root "demo#index"
+
+  #this get method redirects the admin who is already logged in to the index page
+  get 'admin', :to => "access#index"
+
   #get 'demo/index'
   match ':controller(/:action(/:id))', :via => [:get, :post]
 
