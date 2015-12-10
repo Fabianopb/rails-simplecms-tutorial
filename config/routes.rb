@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   root "demo#index"
 
   #this get method redirects the admin who is already logged in to the index page

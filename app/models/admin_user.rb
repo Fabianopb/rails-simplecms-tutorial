@@ -36,7 +36,9 @@ class AdminUser < ActiveRecord::Base
                           :confirmation => true
 
   validate :username_is_allowed
-  validate :no_new_users_on_saturday, :on => :create
+  # validate :no_new_users_on_saturday, :on => :create
+
+  scope :sorted, lambda { order("admin_users.last_name ASC", "admin_users.first_name ASC") }
 
   def username_is_allowed
     if FORBIDDEN_USERNAMES.include?(username)
@@ -46,10 +48,16 @@ class AdminUser < ActiveRecord::Base
 
   # Errors related to a specific attribute
   # can be added to errors[:base]
-  def no_new_users_on_saturday
-    if Time.now.wday == 6
-      errors[:base] << "No new users on Saturdays."
-    end
+  # def no_new_users_on_saturday
+  #   if Time.now.wday == 6
+  #     errors[:base] << "No new users on Saturdays."
+  #   end
+  # end
+
+  def name
+    "#{first_name} #{last_name}"
+    # or: first_name + ' ' + last_name
+    # or: [first_name, last_name].join(' ')
   end
 
 end
