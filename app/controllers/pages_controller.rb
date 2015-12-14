@@ -68,7 +68,6 @@ class PagesController < ApplicationController
   def find_subject
     if params[:subject_id]
       @subject = Subject.find(params[:subject_id])
-    else
     end
   end
 
