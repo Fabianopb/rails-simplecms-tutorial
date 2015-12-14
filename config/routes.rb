@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root "demo#index"
+  root "public#index"
+
+  get 'show/:permalink', :to => 'public#show'
 
   #this get method redirects the admin who is already logged in to the index page
   get 'admin', :to => "access#index"
