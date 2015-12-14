@@ -38,7 +38,8 @@ class AdminUser < ActiveRecord::Base
   validate :username_is_allowed
   # validate :no_new_users_on_saturday, :on => :create
 
-  scope :sorted, lambda { order("admin_users.last_name ASC", "admin_users.first_name ASC") }
+  # sorting could be disambiguated by adding admin_users. in front of last_name or first_name
+  scope :sorted, lambda { order("last_name ASC", "first_name ASC") }
 
   def username_is_allowed
     if FORBIDDEN_USERNAMES.include?(username)

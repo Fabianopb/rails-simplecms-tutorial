@@ -30,7 +30,7 @@ class AdminUsersController < ApplicationController
     @admin_user = AdminUser.find(params[:id])
     if @admin_user.update_attributes(admin_user_params)
       flash[:notice] = "Admin User updated successfully."
-      redirect_to(:action => 'edit')
+      redirect_to(:action => 'index')
     else
       render('edit')
     end
@@ -41,7 +41,7 @@ class AdminUsersController < ApplicationController
   end
 
   def destroy
-    admin_user = AdminUser.find(params[:id]).destroy
+    AdminUser.find(params[:id]).destroy
     flash[:notice] = "Admin User destroyed successfully."
     redirect_to(:action => 'index')
   end
